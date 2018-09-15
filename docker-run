@@ -1,0 +1,9 @@
+#!/bin/bash
+
+docker build -t checkin-db .
+
+# docker run -d --name checkin-server -v \"$PWD\":/usr/local/app --net=checkin-net -p 8000:8000 -p 9222:9222 checkin-server
+
+docker run -d --name checkin-db --net=checkin-net checkin-db
+
+docker run -d --name checkin-mongo-express --net=checkin-net -e ME_CONFIG_MONGODB_SERVER="checkin-mongo" -p 8081:8081 mongo-express:0.49
