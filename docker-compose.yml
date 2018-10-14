@@ -1,0 +1,23 @@
+version: '3'
+services:
+  checkin-db:
+    build: ./checkin-db
+    image: checkin-db:1.0
+    volumes:
+      - ./checkin-db/db:/etc/mongo/db
+  checkin-api:
+    build: ./checkin-api
+    image: checkin-api:1.0
+    depends_on:
+      - checkin-db
+    volumes:
+      - ./checkin-api/:/usr/local/app
+    ports:
+      - 8000:8000
+  checkin-client:
+    build: ./checkin-client
+    image: checkin-client:1.0
+    volumes:
+      - ./checkin-client/dist:/usr/share/nginx/html
+    ports:
+      - 80:80
