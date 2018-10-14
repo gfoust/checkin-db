@@ -4,7 +4,7 @@ services:
     build: ./checkin-db
     image: checkin-db:1.0
     volumes:
-      - ./checkin-db/db:/etc/mongo/db
+      - ./checkin-db/db:/data/db
   checkin-api:
     build: ./checkin-api
     image: checkin-api:1.0
