@@ -83,19 +83,20 @@ db.classes.createIndex({
 
 let result = db.classes.insertMany([
   {
+    tag: 'twos',
+    name: 'Two Year Olds',
+  },
+  {
     tag: 'threes',
     name: 'Three Year Olds',
-    color: 'blue',
   },
   {
     tag: 'fours',
     name: 'Four Year Olds',
-    color: 'yellow',
   },
   {
     tag: 'kinder',
     name: 'Kindergarten',
-    color: 'green',
   }
 ], {
   ordered: true,
