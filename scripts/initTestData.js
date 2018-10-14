@@ -4,9 +4,6 @@ const connection = new Mongo();
 const db = connection.getDB('checkin');
 
 
-
-
-
 const firstNames = [
   'Joe',
   'Sue',
@@ -127,7 +124,7 @@ for (; i < max; ++i) {
     firstName,
     lastName,
     class: clas,
-    status: 'away',
+    status: 'absent',
   });
 
   if (! result.acknowledged) {
