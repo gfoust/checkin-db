@@ -4,7 +4,9 @@ services:
     build: ./checkin-db
     image: checkin-db:1.0
     volumes:
-      - ./checkin-db/db:/data/db
+      - checkin-data:/data/db
+    networks:
+      - checkin-net
   checkin-api:
     build: ./checkin-api
     image: checkin-api:1.0
@@ -12,6 +14,8 @@ services:
       - checkin-db
     volumes:
       - ./checkin-api/:/usr/local/app
+    networks:
+      - checkin-net
     ports:
       - 8000:8000
   checkin-client:
@@ -19,5 +23,11 @@ services:
     image: checkin-client:1.0
     volumes:
       - ./checkin-client/dist:/usr/share/nginx/html
+    networks:
+      - checkin-net
     ports:
       - 80:80
+networks:
+  checkin-net:
+volumes:
+  checkin-data:
